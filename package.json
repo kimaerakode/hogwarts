@@ -1,0 +1,19 @@
+{
+  "name": "hogwarts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "Rosalina Frey",
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "dev": "node app.js",
+    "watch": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "pg": "^8.23.1"
+  }
+}
