@@ -3,10 +3,10 @@ import * as teachersController from "../controllers/teachers.controller.js";
 
 const teachersRouter = express.Router();
 
-teachersRouter.get("/teachers", teachersController.getAllTeachers);
-teachersRouter.get("/teachers/:id", teachersController.getTeacherById);
-teachersRouter.post("/teachers", teachersController.createNewTeacher);
-teachersRouter.put("/teachers/:id", teachersController.updTeacherById);
-teachersRouter.delete("/teachers/:id", teachersController.delTeacherById);
+teachersRouter.get("", teachersController.getAllTeachers);
+teachersRouter.get("/:id", teachersController.getTeacherById);
+teachersRouter.post("", teachersController.createNewTeacher);
+teachersRouter.put("/:id", teachersController.updTeacherById);
+teachersRouter.delete("/:id", teachersController.delTeacherById);
 
 export default teachersRouter;

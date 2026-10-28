@@ -3,7 +3,7 @@ import * as housesController from "../controllers/houses.controller.js";
 
 const housesRouter = express.Router();
 
-housesRouter.get("/houses", housesController.getAllHouses);
-housesRouter.get("/houses/:id", housesController.getHouseById);
+housesRouter.get("/", housesController.getAllHouses);
+housesRouter.get("/:id", housesController.getHouseById);
 
 export default housesRouter;
