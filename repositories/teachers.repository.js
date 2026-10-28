@@ -30,3 +30,18 @@ export async function createNewTeacher(name, house) {
   );
   return result.rows[0];
 }
+
+// DELETE existing teacher
+
+export async function deleteTeacherById(id) {
+  const one = await pool.query(
+    "DELETE FROM hogwarts.teachers WHERE id = $1 RETURNING *",
+    [id],
+  );
+
+  if (one.rowCount === 0) {
+    return null;
+  } else {
+    return one.rows[0];
+  }
+}

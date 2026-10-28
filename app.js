@@ -65,7 +65,7 @@ app.get("/teachers", async (req, res) => {
 app.get("/teachers/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const teacher = await housesRepository.getTeacherById(id);
+    const teacher = await teachersRepository.getTeacherById(id);
 
     if (teacher) {
       res.status(200).json(teacher);
@@ -106,7 +106,25 @@ app.post("/teachers", async (req, res) => {
 app.put("/teachers/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const teacher = await housesRepository.getTeacherById(id);
+    const teacher = await teachersRepository.getTeacherById(id);
+
+    if (teacher) {
+      res.status(200).json(teacher);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// DELETE existing teacher
+
+app.delete("/teachers/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const teacher = await teachersRepository.deleteTeacherById(id);
 
     if (teacher) {
       res.status(200).json(teacher);

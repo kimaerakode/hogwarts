@@ -19,5 +19,3 @@ export async function getHouseById(id) {
     return one.rows[0];
   }
 }
-
-
