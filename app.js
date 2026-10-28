@@ -78,27 +78,46 @@ app.get("/teachers/:id", async (req, res) => {
   }
 });
 
-// Teacher C new
+// Teacher Create new
+
+app.post("/teachers", async (req, res) => {
+  try {
+    const { name, house } = req.body;
+
+    if (!name) {
+      return res.status(400).json({ error: "name is required" });
+    }
+
+    if (!house) {
+      return res.status(400).json({ error: "house is required" });
+    }
+
+    const newTeacher = await teachersRepository.createNewTeacher(name, house);
+
+    res.status(201).json(newTeacher);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error", code: err.code });
+  }
+});
 
 // Update existing teacher - PUT
 
 app.put("/teachers/:id", async (req, res) => {
   try {
-    const one = await pool.query(
-      "SELECT * FROM hogwarts.teachers WHERE id = $1",
-      [req.params.id],
-    );
+    const id = req.params.id;
+    const teacher = await housesRepository.getTeacherById(id);
 
-    if (one.rowCount === 0) return res.sendStatus(404);
-
-    res.status(200).json(one.rows[0]);
+    if (teacher) {
+      res.status(200).json(teacher);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Database error" });
   }
 });
-
-//Teacer D existing
 
 // STUDENTS ***
 

@@ -21,3 +21,12 @@ export async function getTeacherById(id) {
     return one.rows[0];
   }
 }
+
+// CREATE new teacher
+export async function createNewTeacher(name, house) {
+  const result = await pool.query(
+    "INSERT INTO hogwarts.teachers (name, house) VALUES ($1, $2) RETURNING *",
+    [name, house],
+  );
+  return result.rows[0];
+}

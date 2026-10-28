@@ -6,6 +6,11 @@ info:
 http:
   method: POST
   url: http://localhost:3000/teachers
+  body:
+    type: json
+    data: |-
+      {"name": "Alastor 'Mad-Eye' Moody", "house": "unknown"
+      }
   auth: inherit
 
 settings:
