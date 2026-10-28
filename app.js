@@ -2,6 +2,7 @@ import express from "express";
 import { pool } from "./db.js";
 import * as housesRepository from "./repositories/houses.repository.js";
 import * as teachersRepository from "./repositories/teachers.repository.js";
+import * as studentsRepository from "./repositories/students.repository.js";
 
 const app = express();
 app.use(express.json());
@@ -143,10 +144,8 @@ app.delete("/teachers/:id", async (req, res) => {
 
 app.get("/students", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM hogwarts.students");
-    console.log(result);
-
-    res.json(result.rows);
+    const allStudents = await studentsRepository.getAllStudents();
+    res.json(allStudents);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error", code: err.code });
@@ -154,6 +153,22 @@ app.get("/students", async (req, res) => {
 });
 
 // students R id - GET a single student
+
+app.get("/students/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const teacher = await studentsRepository.getStudentById(id);
+
+    if (teacher) {
+      res.status(200).json(teacher);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
 
 app.get("/students/:id", async (req, res) => {
   try {
@@ -172,6 +187,27 @@ app.get("/students/:id", async (req, res) => {
 });
 
 // Students C new
+
+app.post("/students", async (req, res) => {
+  try {
+    const { name, house } = req.body;
+
+    if (!name) {
+      return res.status(400).json({ error: "name is required" });
+    }
+
+    if (!house) {
+      return res.status(400).json({ error: "house is required" });
+    }
+
+    const newStudent = await studentsRepository.createNewStudent(name, house);
+
+    res.status(201).json(newStudent);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error", code: err.code });
+  }
+});
 
 app.post("/students", async (req, res) => {
   try {
