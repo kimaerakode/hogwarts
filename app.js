@@ -1,7 +1,11 @@
 import express from "express";
 import { pool } from "./db.js";
+import * as housesRepository from "./repositories/houses.repository.js";
+import * as teachersRepository from "./repositories/teachers.repository.js";
 
 const app = express();
+app.use(express.json());
+const port = 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
@@ -16,10 +20,8 @@ app.listen(3000, () => {
 
 app.get("/houses", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM hogwarts.houses");
-    console.log(result);
-
-    res.json(result.rows);
+    const allHouses = await housesRepository.getAllHouses();
+    res.json(allHouses);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error", code: err.code });
@@ -30,14 +32,14 @@ app.get("/houses", async (req, res) => {
 
 app.get("/houses/:id", async (req, res) => {
   try {
-    const one = await pool.query(
-      "SELECT * FROM hogwarts.houses WHERE id = $1",
-      [req.params.id],
-    );
+    const id = req.params.id;
+    const house = await housesRepository.getHouseById(id);
 
-    if (one.rowCount === 0) return res.sendStatus(404);
-
-    res.status(200).json(one.rows[0]);
+    if (house) {
+      res.status(200).json(house);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Database error" });
@@ -50,10 +52,12 @@ app.get("/houses/:id", async (req, res) => {
 
 app.get("/teachers", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM hogwarts.teachers");
-    console.log(result);
+    const allTeachers = await teachersRepository.getAllTeachers();
+    res.json(allTeachers);
+    // const result = await pool.query("SELECT * FROM hogwarts.teachers");
+    // console.log(result);
 
-    res.json(result.rows);
+    // res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error", code: err.code });
