@@ -64,14 +64,14 @@ app.get("/teachers", async (req, res) => {
 
 app.get("/teachers/:id", async (req, res) => {
   try {
-    const one = await pool.query(
-      "SELECT * FROM hogwarts.teachers WHERE id = $1",
-      [req.params.id],
-    );
+    const id = req.params.id;
+    const teacher = await housesRepository.getTeacherById(id);
 
-    if (one.rowCount === 0) return res.sendStatus(404);
-
-    res.status(200).json(one.rows[0]);
+    if (teacher) {
+      res.status(200).json(teacher);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Database error" });
