@@ -54,10 +54,6 @@ app.get("/teachers", async (req, res) => {
   try {
     const allTeachers = await teachersRepository.getAllTeachers();
     res.json(allTeachers);
-    // const result = await pool.query("SELECT * FROM hogwarts.teachers");
-    // console.log(result);
-
-    // res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error", code: err.code });
