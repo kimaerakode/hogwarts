@@ -31,6 +31,19 @@ export async function createNewStudent(name, house) {
   return result.rows[0];
 }
 
+// UPDATE existing student
+export async function updateStudentById(id, name, year, house) {
+  const result = await pool.query(
+    "UPDATE hogwarts.students SET name = $1, year = $2, house = $3 WHERE id = $4 RETURNING *",
+    [name, year, house, id],
+  );
+  if (result.rowCount === 0) {
+    return null;
+  } else {
+    return result.rows[0];
+  }
+}
+
 // DELETE existing Student
 
 export async function deleteStudentById(id) {

@@ -53,6 +53,38 @@ export const createNewStudent = async (req, res) => {
   }
 };
 
+export const updateStudentById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { name, year, house } = req.body;
+
+    if (!name) {
+      return res.status(404).json({ error: "name is required" });
+    }
+    if (!year) {
+      return res.status(404).json({ error: "year is required" });
+    }
+    if (!house) {
+      return res.status(404).json({ error: "house is required" });
+    }
+    const student = await studentsRepository.updateStudentById(
+      id,
+      name,
+      year,
+      house,
+    );
+
+    if (student) {
+      res.status(200).json(student);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error", code: err.code });
+  }
+};
+
 //  DELETE existing student by id
 
 export const deleteStudentById = async (req, res) => {

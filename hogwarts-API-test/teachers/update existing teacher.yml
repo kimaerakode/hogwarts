@@ -6,6 +6,9 @@ info:
 http:
   method: PUT
   url: http://localhost:3000/teachers/1
+  body:
+    type: json
+    data: ""
   auth: inherit
 
 settings:

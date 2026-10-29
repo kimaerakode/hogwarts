@@ -69,12 +69,36 @@ export const updTeacherById = async (req, res) => {
   }
 };
 
-// DELETE existing teacher
-
-export const delTeacherById = async (req, res) => {
+export const updateTeacherById = async (req, res) => {
   try {
     const id = req.params.id;
-    const teacher = await teachersRepository.delTeacherById(id);
+    const { name, house } = req.body;
+
+    if (!name) {
+      return res.status(404).json({ error: "name is required" });
+    }
+    if (!house) {
+      return res.status(404).json({ error: "house is required" });
+    }
+    const teacher = await teachersRepository.updateTeacherById(id, name, house);
+
+    if (teacher) {
+      res.status(200).json(teacher);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error", code: err.code });
+  }
+};
+
+// DELETE existing teacher
+
+export const deleteTeacherById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const teacher = await teachersRepository.deleteTeacherById(id);
 
     if (teacher) {
       res.status(200).json(teacher);

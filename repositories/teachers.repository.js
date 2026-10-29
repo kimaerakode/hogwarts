@@ -31,6 +31,20 @@ export async function createNewTeacher(name, house) {
   return result.rows[0];
 }
 
+// UPDATE existing teacher
+
+export async function updateTeacherById(id, name, house) {
+  const result = await pool.query(
+    "UPDATE hogwarts.teachers SET name = $1, house = $2 WHERE id = $3 RETURNING *",
+    [name, house, id],
+  );
+  if (result.rowCount === 0) {
+    return null;
+  } else {
+    return result.rows[0];
+  }
+}
+
 // DELETE existing teacher
 
 export async function deleteTeacherById(id) {
