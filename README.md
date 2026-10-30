@@ -28,3 +28,17 @@
 | GET    | /teachers/:id | Get Teacher by id    |
 | PUT    | /teachers/:id | Update Teacher by id |
 | DELETE | /teacher/:id  | Delete Teacher by id |
+
+### Courses
+
+| Method | Route    | Description     |
+| ------ | -------- | --------------- |
+| GET    | /courses | Get all Courses |
+
+### Course Students
+
+Note: dette data er ikke specielt brugbart (endnu). Jeg ville gerne prøve at få Course Students til at returnere Course-objekter med arrays af Student-objekter, men kunne ikke gennemskue hvordan...
+
+| Method | Route            | Description              |
+| ------ | ---------------- | ------------------------ |
+| GET    | /course_students | Get all Courses Students |
