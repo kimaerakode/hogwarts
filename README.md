@@ -41,4 +41,4 @@
 
 | Method | Route            | Description              |
 | ------ | ---------------- | ------------------------ |
-| GET    | /course_students | Get all Courses Students |
+| GET    | /course_students | Get all Course Students |
