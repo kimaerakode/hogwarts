@@ -37,7 +37,7 @@
 
 ### Course Students
 
-Note: dette data er ikke specielt brugbart (endnu). Jeg ville gerne prøve at få Course Students til at returnere Course-objekter med arrays af Student-objekter, men kunne ikke gennemskue hvordan...
+<strong>Note:</strong> Dette data er ikke specielt brugbart (endnu). Jeg ville gerne prøve at få Course Students til at returnere Course-objekter med arrays af Student-objekter, men kunne ikke gennemskue hvordan...
 
 | Method | Route            | Description              |
 | ------ | ---------------- | ------------------------ |
