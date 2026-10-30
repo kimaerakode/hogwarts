@@ -3,6 +3,7 @@ import express from "express";
 import housesRouter from "./routers.js/houses.router.js";
 import teachersRouter from "./routers.js/teachers.router.js";
 import studentsRouter from "./routers.js/students.router.js";
+import coursesRouter from "./routers.js/courses.router.js";
 
 const app = express();
 
@@ -23,3 +24,5 @@ app.use("/houses/", housesRouter);
 app.use("/teachers/", teachersRouter);
 
 app.use("/students/", studentsRouter);
+
+app.use("/courses/", coursesRouter);
