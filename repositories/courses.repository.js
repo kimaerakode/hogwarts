@@ -21,5 +21,3 @@ export async function getCourseById(id) {
     return one.rows[0];
   }
 }
-
-// GET 
