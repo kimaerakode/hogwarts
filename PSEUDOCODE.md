@@ -1,6 +1,6 @@
 # Pseudokode
 
-Beskrivelserne tager udgangspunkt i Teacher. Samme mønster gælder for Houses og Students. Houses kan dog kun "reades" (GET), og Students har et ekstra parameter: { year }.
+Beskrivelserne tager udgangspunkt i Teacher. Samme mønster gælder for Houses, Students og Courses. Houses og Courses kan dog kun "reades" (GET), og Students har et ekstra parameter: { year }.
 
 ## Create new
 
