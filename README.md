@@ -27,7 +27,7 @@
 | GET    | /students     | Get all Students     |
 | GET    | /teachers/:id | Get Teacher by id    |
 | PUT    | /teachers/:id | Update Teacher by id |
-| DELETE | /teacher/:id  | Delete Teacher by id |
+| DELETE | /teachers/:id  | Delete Teacher by id |
 
 ### Courses
 
