@@ -1,5 +1,7 @@
 # Pseudokode
 
+Beskrivelserne tager udgangspunkt i 'Teacher'. Samme mønster gælder for Houses og Students. Houses kan dog kun "reades" (GET), og Students har et ekstra parameter 'Year'.
+
 ## Create new
 
 ### Route: POST /teachers
@@ -41,7 +43,7 @@ returner det med en 200
 
 Returner 500 hvis der opstår en databasefejl
 
-## Update by id:
+## Update by id
 
 ### Route: PUT /teachers/:id
 
