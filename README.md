@@ -10,6 +10,7 @@
 This project is a REST API built with Node.js and Express.
 It uses PostgreSQL for data storage, managed through DataGrip.
 
+
 ## Endpoints
 
 ### Houses
