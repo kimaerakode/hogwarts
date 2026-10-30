@@ -1,5 +1,15 @@
 # Hogwarts course management (EK webdev: backend + DB) ✩₊˚.⋆☾⋆⁺₊✧
 
+## Tech stack
+
+- Node.js
+- Express
+- PostgreSQL
+- DataGrip
+
+This project is a REST API built with Node.js and Express.
+It uses PostgreSQL for data storage, managed through DataGrip.
+
 ## Endpoints
 
 ### Houses
