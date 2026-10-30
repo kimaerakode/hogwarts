@@ -1,4 +1,4 @@
-# Hogwarts course management (EK webdev: backend + DB)
+# Hogwarts course management (EK webdev: backend + DB) ✩₊˚.⋆☾⋆⁺₊✧
 
 ## Endpoints
 
