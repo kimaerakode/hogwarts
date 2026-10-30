@@ -1,6 +1,6 @@
 # Pseudokode
 
-Beskrivelserne tager udgangspunkt i 'Teacher'. Samme mønster gælder for Houses og Students. Houses kan dog kun "reades" (GET), og Students har et ekstra parameter 'Year'.
+Beskrivelserne tager udgangspunkt i Teacher. Samme mønster gælder for Houses og Students. Houses kan dog kun "reades" (GET), og Students har et ekstra parameter: { year }.
 
 ## Create new
 
@@ -63,7 +63,7 @@ Returner den med en 200
 
 Returner 500 hvis der opstår en databasefejl
 
-## DELETE by id
+## Delete by id
 
 ### Route: DELETE /teachers/:id
 
