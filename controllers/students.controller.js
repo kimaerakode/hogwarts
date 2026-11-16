@@ -3,19 +3,19 @@ import * as studentsRepository from "../repositories/students.repository.js";
 // GET all Students
 
 export const getAllStudents = async (req, res) => {
-  try {
+
     const allStudents = await studentsRepository.getAllStudents();
     res.json(allStudents);
-  } catch (err) {
+
     console.error(err);
     res.status(500).json({ error: "Database error", code: err.code });
-  }
+  
 };
 
 // GET single student by id
 
 export const getStudentById = async (req, res) => {
-  try {
+
     const id = req.params.id;
     const teacher = await studentsRepository.getStudentById(id);
 
@@ -24,16 +24,16 @@ export const getStudentById = async (req, res) => {
     } else {
       res.sendStatus(404);
     }
-  } catch (err) {
+ 
     console.log(err);
     res.status(500).json({ error: "Database error" });
-  }
+  
 };
 
 // CREATE new student
 
 export const createNewStudent = async (req, res) => {
-  try {
+
     const { name, house } = req.body;
 
     if (!name) {
@@ -47,14 +47,14 @@ export const createNewStudent = async (req, res) => {
     const newStudent = await studentsRepository.createNewStudent(name, house);
 
     res.status(201).json(newStudent);
-  } catch (err) {
+
     console.error(err);
     res.status(500).json({ error: "Database error", code: err.code });
-  }
+  
 };
 
 export const updateStudentById = async (req, res) => {
-  try {
+
     const id = req.params.id;
     const { name, year, house } = req.body;
 
@@ -79,16 +79,16 @@ export const updateStudentById = async (req, res) => {
     } else {
       res.sendStatus(404);
     }
-  } catch (err) {
+
     console.log(err);
     res.status(500).json({ error: "Database error", code: err.code });
-  }
+  
 };
 
 //  DELETE existing student by id
 
 export const deleteStudentById = async (req, res) => {
-  try {
+
     const id = req.params.id;
     const student = await studentsRepository.deleteStudentById(id);
 
@@ -97,8 +97,8 @@ export const deleteStudentById = async (req, res) => {
     } else {
       res.sendStatus(404);
     }
-  } catch (err) {
+
     console.log(err);
     res.status(500).json({ error: "Database error" });
-  }
+  
 };
