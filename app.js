@@ -5,6 +5,7 @@ import teachersRouter from "./routers.js/teachers.router.js";
 import studentsRouter from "./routers.js/students.router.js";
 import coursesRouter from "./routers.js/courses.router.js";
 import courseStudentsRouter from "./routers.js/course_students.router.js";
+import errorhandler from "./errorhandling/errorhandler.js";
 
 const app = express();
 
@@ -21,11 +22,9 @@ app.listen(port, () => {
 });
 
 app.use("/houses/", housesRouter);
-
 app.use("/teachers/", teachersRouter);
-
 app.use("/students/", studentsRouter);
-
 app.use("/courses/", coursesRouter);
-
 app.use("/course_students/", courseStudentsRouter);
+
+app.use(errorhandler);
