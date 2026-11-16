@@ -4,7 +4,9 @@ import { pool } from "../db.js";
 
 // GET all teachers
 export async function getAllTeachers() {
-  const result = await pool.query("SELECT * FROM hogwarts.teachers");
+  const result = await pool.query(
+    "SELECT teachers.id, teachers.name, houses.name AS house FROM hogwarts.teachers LEFT JOIN hogwarts.houses ON teachers.house_id = houses.id",
+  );
   return result.rows;
 }
 
